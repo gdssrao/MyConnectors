@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<namespace xmlns="http://www.mulesoft.org/schema/mule/tooling.attributes" xmlns:mule="http://www.mulesoft.org/schema/mule/core" url="http://www.mulesoft.org/schema/mule/my-mule-logger" prefix="my-mule-logger">
+  <global-cloud-connector versions="[3.5.0,8.0.0]" caption="MyMuleLogger" description="" icon="" localId="parentConfig" image="" abstract="true" extends="http://www.mulesoft.org/schema/mule/my-mule-logger/abstractMy-mule-loggerConnectorGeneric"></global-cloud-connector>
+  <global-cloud-connector versions="[3.5.0,8.0.0]" caption="MyMuleLogger" description="Global MyMuleLogger configuration information." icon="icons/small/my-mule-logger-connector-24x16.png" localId="config" image="icons/large/my-mule-logger-connector-48x32.png" abstract="false" extends="http://www.mulesoft.org/schema/mule/my-mule-logger/parentConfig" connectivityTesting="off">
+    <attribute-category caption="General" description="My-mule-logger configuration properties.">
+      <group id="my-mule-loggerGenericProperties" caption="Basic Settings">
+        <name name="name" caption="Name" description="Give a name to this configuration so it can be later referenced by config-ref." required="true"></name>
+      </group>
+      <group id="general" caption="General">
+        <string name="loggerName" caption="Logger Name" description="Configurable Logger Name." required="true" javaType="java.lang.String"></string>
+        <string name="serviceName" caption="Service Name" description="Configurable Service Name." required="true" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+  </global-cloud-connector>
+  <cloud-connector caption="Abstractmy-mule-loggerconnectorgeneric" description="Interact with My-mule-logger." icon="icons/small/my-mule-logger-connector-24x16.png" localId="abstractMy-mule-loggerConnectorGeneric" image="icons/large/my-mule-logger-connector-48x32.png" abstract="true">
+    <attribute-category caption="General" description="General.">
+      <group id="abstractMy-mule-loggerConnectorGeneric" caption="Basic Settings">
+        <globalRef requiredType="http://www.mulesoft.org/schema/mule/my-mule-logger/config" name="config-ref" caption="Connector Configuration" description="Specify which configuration to use for this invocation." required="true"></globalRef>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector versions="[3.5.0,8.0.0]" aliasId="org.mule.tooling.ui.modules.core.pattern.my-mule-logger" caption="MyMuleLogger" description="File Name :MyMuleLoggerConnector." icon="icons/small/my-mule-logger-connector-24x16.png" localId="my-mule-logger-connector" image="icons/large/my-mule-logger-connector-48x32.png" extends="http://www.mulesoft.org/schema/mule/my-mule-logger/abstractMy-mule-loggerConnectorGeneric">
+    <attribute-category caption="General" description="General.">
+      <group id="my-mule-loggerConnectorGeneric" caption="Basic Settings">
+        <modeSwitch alwaysCombo="true" name="My-mule-logger operations to execute" caption="Operation" description="Operation.">
+          <no-operation abstractElement="http://www.mulesoft.org/schema/mule/my-mule-logger/abstractMy-mule-loggerConnectorGeneric" versions="[3.5.0,8.0.0]" connector-name="processor"></no-operation>
+          <mode modeId="http://www.mulesoft.org/schema/mule/my-mule-logger/debug" modeLabel="Debug"></mode>
+        </modeSwitch>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Debug" icon="icons/small/my-mule-logger-connector-24x16.png" localId="debug" image="icons/large/my-mule-logger-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/my-mule-logger/abstractMy-mule-loggerConnectorGeneric">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="logMessage" caption="Log Message" description="Is log message passed to populate log message." required="true" javaType="java.lang.String"></string>
+        <string name="processState" caption="Process State" description="Is process State passed for current state of process." required="true" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+</namespace>

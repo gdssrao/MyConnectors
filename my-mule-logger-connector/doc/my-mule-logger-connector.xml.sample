@@ -1,0 +1,3 @@
+<!-- BEGIN_INCLUDE(my-mule-logger:my-processor) -->
+    <my-mule-logger:my-processor content="#[map-payload:content]" />
+<!-- END_INCLUDE(my-mule-logger:my-processor) -->
