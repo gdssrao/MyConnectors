@@ -1,0 +1,1 @@
+http\://www.mulesoft.org/schema/mule/weather-api=org.mule.modules.weatherapi.config.WeatherApiNamespaceHandler

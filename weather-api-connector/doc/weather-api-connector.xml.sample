@@ -1,0 +1,6 @@
+<!-- BEGIN_INCLUDE(weather-api:my-processor) -->
+    <weather-api:my-processor content="#[map-payload:content]" />
+<!-- END_INCLUDE(weather-api:my-processor) -->
+<!-- BEGIN_INCLUDE(weather-api:weather) -->
+    <weather-api:weather content="#[map-payload:content]" />
+<!-- END_INCLUDE(weather-api:weather) -->
