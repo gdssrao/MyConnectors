@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<namespace xmlns="http://www.mulesoft.org/schema/mule/tooling.attributes" xmlns:mule="http://www.mulesoft.org/schema/mule/core" url="http://www.mulesoft.org/schema/mule/weather-oath" prefix="weather-oath">
+  <global-cloud-connector versions="[3.5.0,8.0.0]" caption="WeatherOath" description="" icon="" localId="parentConfig" image="" abstract="true" extends="http://www.mulesoft.org/schema/mule/weather-oath/abstractWeather-oathConnectorGeneric"></global-cloud-connector>
+  <global-cloud-connector versions="[3.5.0,8.0.0]" caption="WeatherOath: OAuth2 Configuration" description="Global OAuth2 Configuration configuration information. OAuth2 Connection Strategy." icon="icons/small/weather-oath-connector-24x16.png" localId="config-type" image="icons/large/weather-oath-connector-48x32.png" abstract="false" extends="http://www.mulesoft.org/schema/mule/weather-oath/parentConfig" connectivityTesting="off" metaData="static" metaDataKeyDisplay="DISPLAY_NAME">
+    <attribute-category caption="General" description="Weather-oath configuration properties.">
+      <group id="weather-oathGenericProperties" caption="Basic Settings">
+        <name name="name" caption="Name" description="Give a name to this configuration so it can be later referenced by config-ref." required="true"></name>
+      </group>
+      <group id="connection" caption="Connection">
+        <string name="consumerKey" caption="Consumer Key" description="The OAuth consumer key." required="true" javaType="java.lang.String"></string>
+        <string name="consumerSecret" caption="Consumer Secret" description="The OAuth consumer secret." required="true" javaType="java.lang.String"></string>
+        <enum defaultValue="EXCEPTION" allowsCustom="false" name="onNoToken" xsdType="string" caption="On No Token" description="Action to take when no token is found.">
+          <option value="EXCEPTION"></option>
+          <option value="STOP_FLOW"></option>
+        </enum>
+      </group>
+      <group id="general" caption="General">
+        <string defaultValue="Hello" name="greeting" caption="Greeting" description="Configurable." required="false" javaType="java.lang.String"></string>
+        <string defaultValue="How are you?" name="replay" caption="Replay" description="Configurable." required="false" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+    <attribute-category caption="Oauth" description="OAuth.">
+      <group id="oauthCallbackConfigGroup" caption="Oauth Callback Config">
+        <childElement inplace="true" name="http://www.mulesoft.org/schema/mule/weather-oath/oauth-callback-config" caption="" description=""></childElement>
+      </group>
+      <group id="oauthStoreConfigGroup" caption="Oauth Object Store Config">
+        <childElement inplace="true" name="http://www.mulesoft.org/schema/mule/weather-oath/oauth-store-config" caption="" description=""></childElement>
+      </group>
+    </attribute-category>
+  </global-cloud-connector>
+  <cloud-connector caption="Abstractweather-oathconnectorgeneric" description="Interact with Weather-oath." icon="icons/small/weather-oath-connector-24x16.png" localId="abstractWeather-oathConnectorGeneric" image="icons/large/weather-oath-connector-48x32.png" abstract="true">
+    <attribute-category caption="General" description="General.">
+      <group id="abstractWeather-oathConnectorGeneric" caption="Basic Settings">
+        <globalRef requiredType="http://www.mulesoft.org/schema/mule/weather-oath/config-type" name="config-ref" caption="Connector Configuration" description="Specify which configuration to use for this invocation." required="true"></globalRef>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector versions="[3.5.0,8.0.0]" aliasId="org.mule.tooling.ui.modules.core.pattern.weather-oath" caption="WeatherOath" description="Anypoint Connector." icon="icons/small/weather-oath-connector-24x16.png" localId="weather-oath-connector" image="icons/large/weather-oath-connector-48x32.png" extends="http://www.mulesoft.org/schema/mule/weather-oath/abstractWeather-oathConnectorGeneric">
+    <attribute-category caption="General" description="General.">
+      <group id="weather-oathConnectorGeneric" caption="Basic Settings">
+        <modeSwitch alwaysCombo="true" name="Weather-oath operations to execute" caption="Operation" description="Operation.">
+          <no-operation abstractElement="http://www.mulesoft.org/schema/mule/weather-oath/abstractWeather-oathConnectorGeneric" versions="[3.5.0,8.0.0]" connector-name="processor"></no-operation>
+          <mode modeId="http://www.mulesoft.org/schema/mule/weather-oath/authorize" modeLabel="Authorize"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/weather-oath/unauthorize" modeLabel="Unauthorize"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/weather-oath/greet" modeLabel="Greet"></mode>
+        </modeSwitch>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector caption="Authorize" icon="icons/small/weather-oath-connector-24x16.png" localId="authorize" image="icons/large/weather-oath-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/weather-oath/abstractWeather-oathConnectorGeneric">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="state" caption="State" description="Any value that you wish to be sent with the callback." required="false"></string>
+        <string name="accessTokenUrl" caption="Access Token Url" description="The URL defined by the Service Provider to obtain an access token." required="false"></string>
+        <string name="authorizationUrl" caption="Authorization Url" description="The URL defined by the Service Provider where the resource owner will be redirected to grant authorization to the connector." required="false"></string>
+        <string name="accessTokenId" caption="Access Token Id" description="The id of the access token that will be used to authenticate the call." required="false" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.String" caption="Greet" icon="icons/small/weather-oath-connector-24x16.png" localId="greet" image="icons/large/weather-oath-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/weather-oath/abstractWeather-oathConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string defaultValue="friend" name="friend" caption="Friend" description="Content to be processed." required="false" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+    <attribute-category caption="Advanced" description="Advanced">
+      <group id="advanced" caption="Advanced">
+        <string name="accessTokenId" caption="Access Token Id" description="The id of the access token that will be used to authenticate the call." required="false" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector caption="Unauthorize" icon="icons/small/weather-oath-connector-24x16.png" localId="unauthorize" image="icons/large/weather-oath-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/weather-oath/abstractWeather-oathConnectorGeneric">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="accessTokenId" caption="Access Token Id" description="The id of the access token that will be used to authenticate the call." required="false"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <nested caption="" description="" localId="oauth-callback-config" abstract="true">
+    <string name="domain" caption="Domain" description="The domain name to use when setting up the callback endpoint." required="true"></string>
+    <string name="localPort" caption="Local Port" description="The local port to use when setting up the callback endpoint." required="true"></string>
+    <string name="remotePort" caption="Remote Port" description="The remote port is the port used to build the external callback URL."></string>
+    <string name="path" caption="Path" description="The path to use when setting up the callback endpoint." required="true"></string>
+    <string name="connector-ref" caption="Http Connector Reference" description="The Http Connector to use when setting up the callback endpoint."></string>
+    <string name="defaultAccessTokenId" caption="Default Access Token Id" description="A Mule Expression to use as access token id."></string>
+    <boolean defaultValue="false" name="async" caption="Async" description="Async." fillLine="true"></boolean>
+  </nested>
+  <nested caption="" description="Configuration element for storage of access tokens" localId="oauth-store-config" abstract="true">
+    <string name="objectStore-ref" caption="Object Store Reference" description="Object store reference."></string>
+  </nested>
+</namespace>
