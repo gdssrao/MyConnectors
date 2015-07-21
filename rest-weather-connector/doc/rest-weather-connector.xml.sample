@@ -1,0 +1,6 @@
+<!-- BEGIN_INCLUDE(rest-weather:GetForecastOfCity) -->
+    <rest-weather:GetForecastOfCity config-ref="" id="#[map-payload:id]"  apiKey="#[map-payload:apiKey]"/>
+<!-- END_INCLUDE(rest-weather:GetForecastOfCity) -->
+<!-- BEGIN_INCLUDE(rest-weather:GetForecastOfCity1) -->
+    <rest-weather:GetForecastOfCity1 config-ref=""id="#[map-payload:id]" apiKey="#[map-payload:apiKey]" />
+<!-- END_INCLUDE(rest-weather:GetForecastOfCity1) -->
