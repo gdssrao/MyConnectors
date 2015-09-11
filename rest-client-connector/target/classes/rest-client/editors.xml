@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<namespace xmlns="http://www.mulesoft.org/schema/mule/tooling.attributes" xmlns:mule="http://www.mulesoft.org/schema/mule/core" url="http://www.mulesoft.org/schema/mule/rest-client" prefix="rest-client">
+  <global-cloud-connector versions="[3.5.0,8.0.0]" caption="RestClient" description="" icon="" localId="parentConfig" image="" abstract="true" extends="http://www.mulesoft.org/schema/mule/rest-client/abstractRest-clientConnectorGeneric"></global-cloud-connector>
+  <global-cloud-connector versions="[3.5.0,8.0.0]" caption="RestClient: Configuration" description="Global Configuration configuration information." icon="icons/small/rest-client-connector-24x16.png" localId="config" image="icons/large/rest-client-connector-48x32.png" abstract="false" extends="http://www.mulesoft.org/schema/mule/rest-client/parentConfig" connectivityTesting="off" metaData="static" metaDataKeyDisplay="DISPLAY_NAME" supportsUserDefinedMetaData="false">
+    <attribute-category caption="General" description="Rest-client configuration properties.">
+      <group id="rest-clientGenericProperties" caption="Basic Settings">
+        <name name="name" caption="Name" description="Give a name to this configuration so it can be later referenced by config-ref." required="true"></name>
+      </group>
+      <group id="general" caption="General">
+        <string defaultValue="7.16.0.6" name="host" caption="Host" description="Host." supportsExpressions="false" required="false" javaType="java.lang.String"></string>
+        <string defaultValue="GET" name="httpMethod" caption="Http Method" description="Http method." supportsExpressions="false" required="false" javaType="java.lang.String"></string>
+        <string defaultValue="/wae/network/modeled/entities/node/get-all-nodes" name="path" caption="Path" description="Rest API Path." supportsExpressions="false" required="false" javaType="java.lang.String"></string>
+        <string defaultValue="7777" name="port" caption="Port" description="Port." supportsExpressions="false" required="false" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+  </global-cloud-connector>
+  <cloud-connector caption="Abstractrest-clientconnectorgeneric" description="Interact with Rest-client." icon="icons/small/rest-client-connector-24x16.png" localId="abstractRest-clientConnectorGeneric" image="icons/large/rest-client-connector-48x32.png" abstract="true">
+    <attribute-category caption="General" description="General.">
+      <group id="abstractRest-clientConnectorGeneric" caption="Basic Settings">
+        <globalRef requiredType="http://www.mulesoft.org/schema/mule/rest-client/config" name="config-ref" caption="Connector Configuration" description="Specify which configuration to use for this invocation." required="true"></globalRef>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector versions="[3.5.0,8.0.0]" aliasId="org.mule.tooling.ui.modules.core.pattern.rest-client" caption="RestClient" description="" icon="icons/small/rest-client-connector-24x16.png" localId="rest-client-connector" image="icons/large/rest-client-connector-48x32.png" extends="http://www.mulesoft.org/schema/mule/rest-client/abstractRest-clientConnectorGeneric">
+    <attribute-category caption="General" description="General.">
+      <group id="rest-clientConnectorGeneric" caption="Basic Settings">
+        <modeSwitch alwaysCombo="true" name="Rest-client operations to execute" caption="Operation" description="Operation.">
+          <no-operation abstractElement="http://www.mulesoft.org/schema/mule/rest-client/abstractRest-clientConnectorGeneric" versions="[3.5.0,8.0.0]" connector-name="processor"></no-operation>
+          <mode modeId="http://www.mulesoft.org/schema/mule/rest-client/delete" modeLabel="Delete"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/rest-client/get" modeLabel="Get"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/rest-client/invoke_api" modeLabel="Invoke_api"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/rest-client/patch" modeLabel="Patch"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/rest-client/post" modeLabel="Post"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/rest-client/put" modeLabel="Put"></mode>
+        </modeSwitch>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.codehaus.jettison.json.JSONObject" caption="Delete" icon="icons/small/rest-client-connector-24x16.png" localId="delete" image="icons/large/rest-client-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/rest-client/abstractRest-clientConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General."></attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.codehaus.jettison.json.JSONObject" caption="Get" icon="icons/small/rest-client-connector-24x16.png" localId="get" image="icons/large/rest-client-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/rest-client/abstractRest-clientConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General."></attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.codehaus.jettison.json.JSONObject" caption="Invoke_api" icon="icons/small/rest-client-connector-24x16.png" localId="invoke_api" image="icons/large/rest-client-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/rest-client/abstractRest-clientConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General."></attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.codehaus.jettison.json.JSONObject" caption="Patch" icon="icons/small/rest-client-connector-24x16.png" localId="patch" image="icons/large/rest-client-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/rest-client/abstractRest-clientConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General."></attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.codehaus.jettison.json.JSONObject" caption="Post" icon="icons/small/rest-client-connector-24x16.png" localId="post" image="icons/large/rest-client-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/rest-client/abstractRest-clientConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General."></attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.codehaus.jettison.json.JSONObject" caption="Put" icon="icons/small/rest-client-connector-24x16.png" localId="put" image="icons/large/rest-client-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/rest-client/abstractRest-clientConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General."></attribute-category>
+  </cloud-connector>
+</namespace>
